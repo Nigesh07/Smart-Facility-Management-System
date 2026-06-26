@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Smart Facility favicon">
+  <rect width="64" height="64" rx="12" fill="#0f766e"/>
+  <path d="M18 22h28v20H18z" fill="#ffffff" opacity="0.95"/>
+  <path d="M24 18h16v8H24z" fill="#14b8a6"/>
+  <path d="M22 46h20" stroke="#ccfbf1" stroke-width="3" stroke-linecap="round"/>
+</svg>

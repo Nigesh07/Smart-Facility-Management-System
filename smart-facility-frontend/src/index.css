@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Light mode tokens */
+  --color-surface: #f8fafc;
+  --color-card: #ffffff;
+  --color-card-alt: #f1f5f9;
+  --color-border: #e2e8f0;
+  --color-text-primary: #1e293b;
+  --color-text-secondary: #64748b;
+
+  --color-brand: #5b63d6;
+  --color-brand-hover: #4a52c4;
+  --color-brand-soft: #eef0fd;
+  --color-teal: #3fa79b;
+
+  --status-pending: #c8841d;
+  --status-pending-soft: #fcefd8;
+  --status-assigned: #3d6fd9;
+  --status-assigned-soft: #e3ebfc;
+  --status-progress: #7c5cc4;
+  --status-progress-soft: #efe7fa;
+  --status-completed: #2f9e63;
+  --status-completed-soft: #def3e7;
+  --status-closed: #64748b;
+  --status-closed-soft: #eef1f4;
+  --status-critical: #d6504a;
+  --status-critical-soft: #fbe4e2;
+}
+
+html.dark {
+  --color-surface: #0e1525;
+  --color-card: #16203a;
+  --color-card-alt: #1c2942;
+  --color-border: #2b3954;
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+
+  --color-brand: #6fa8f5;
+  --color-brand-hover: #8ab8f7;
+  --color-brand-soft: rgba(111, 168, 245, 0.14);
+  --color-teal: #54b8ac;
+
+  --status-pending: #e3a93c;
+  --status-pending-soft: rgba(227, 169, 60, 0.16);
+  --status-assigned: #6c9dee;
+  --status-assigned-soft: rgba(108, 157, 238, 0.16);
+  --status-progress: #a88ae0;
+  --status-progress-soft: rgba(168, 138, 224, 0.16);
+  --status-completed: #57c48b;
+  --status-completed-soft: rgba(87, 196, 139, 0.16);
+  --status-closed: #94a3b8;
+  --status-closed-soft: rgba(148, 163, 184, 0.16);
+  --status-critical: #e5786f;
+  --status-critical-soft: rgba(229, 120, 111, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Manrope', sans-serif;
+}
+
+/* Visible keyboard focus ring everywhere */
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Slim, theme-aware scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
