@@ -99,6 +99,7 @@ export default function ManageUsersPage() {
     try {
       await userService.deleteUser(user.id);
       await loadUsers();
+      alert(`User ${user.fullName} deleted successfully.`);
     } catch (err) {
       setActionError(err?.response?.data?.message || 'Failed to delete user');
     }

@@ -44,6 +44,7 @@ D:\Smart-Facility-management-System\smart-facility-backend\src\main\java\com\exa
 D:\Smart-Facility-management-System\smart-facility-backend\src\main\java\com\example\smartfacility\repository\CategoryRepository.java
 D:\Smart-Facility-management-System\smart-facility-backend\src\main\java\com\example\smartfacility\dto\request\CreateUserRequest.java
 D:\Smart-Facility-management-System\smart-facility-backend\src\main\java\com\example\smartfacility\SmartFacilityApplication.java
+D:\Smart-Facility-management-System\smart-facility-backend\src\main\java\com\example\smartfacility\config\DatabasePatchConfig.java
 D:\Smart-Facility-management-System\smart-facility-backend\src\main\java\com\example\smartfacility\dto\request\ChangePasswordRequest.java
 D:\Smart-Facility-management-System\smart-facility-backend\src\main\java\com\example\smartfacility\repository\UserRepository.java
 D:\Smart-Facility-management-System\smart-facility-backend\src\main\java\com\example\smartfacility\enums\TechnicianSpecialization.java
