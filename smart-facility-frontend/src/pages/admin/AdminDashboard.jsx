@@ -40,7 +40,7 @@ export default function AdminDashboard() {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
         <StatCard label="Open tickets" value={openCount} icon={ClipboardDocumentListIcon} accent="brand" />
         <StatCard label="In progress" value={inProgressCount} icon={ClockIcon} accent="progress" />
-        <StatCard label="Closed" value={closedCount} icon={CheckCircleIcon} accent="completed" />
+        <StatCard label="Closed" value={closedCount} icon={CheckCircleIcon} accent="closed" />
         <StatCard label="Total users" value={users.length} icon={UsersIcon} accent="assigned" />
       </div>
 

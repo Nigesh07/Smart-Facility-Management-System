@@ -10,8 +10,8 @@ export default function StatCard({ label, value, icon: Icon, accent = 'brand' })
   };
 
   return (
-    <div className="flex items-center gap-4 rounded-xl2 border border-border bg-card p-4 shadow-soft sm:p-5">
-      <div className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg ${accentClasses[accent]}`}>
+    <div className="flex items-center gap-4 rounded-card border border-border bg-card p-4 shadow-soft sm:p-5">
+      <div className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-btn ${accentClasses[accent]}`}>
         {Icon && <Icon className="h-5 w-5" />}
       </div>
       <div className="flex flex-col">

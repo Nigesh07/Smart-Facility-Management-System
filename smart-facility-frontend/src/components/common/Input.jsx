@@ -28,7 +28,7 @@ export default function Input({
         onChange={onChange}
         placeholder={placeholder}
         disabled={disabled}
-        className={`w-full rounded-lg border bg-card px-3 py-2 text-sm text-text-primary placeholder:text-text-secondary
+        className={`w-full rounded border bg-card px-3 py-2 text-sm text-text-primary placeholder:text-text-secondary
           focus:outline-none focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-1
           disabled:opacity-60 disabled:cursor-not-allowed transition-colors
           ${error ? 'border-status-critical' : 'border-border'}`}

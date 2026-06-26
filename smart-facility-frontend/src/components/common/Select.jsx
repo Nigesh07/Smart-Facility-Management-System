@@ -28,7 +28,7 @@ export default function Select({
           value={value}
           onChange={onChange}
           disabled={disabled}
-          className={`w-full appearance-none rounded-lg border bg-card px-3 py-2 pr-9 text-sm text-text-primary
+          className={`w-full appearance-none rounded border bg-card px-3 py-2 pr-9 text-sm text-text-primary
             focus:outline-none focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-1
             disabled:opacity-60 disabled:cursor-not-allowed transition-colors
             ${error ? 'border-status-critical' : 'border-border'}`}

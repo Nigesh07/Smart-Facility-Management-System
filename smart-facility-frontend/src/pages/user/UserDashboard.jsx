@@ -44,7 +44,7 @@ export default function UserDashboard() {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <StatCard label="Open tickets" value={openCount} icon={ClipboardDocumentListIcon} accent="brand" />
         <StatCard label="In progress" value={inProgressCount} icon={ClockIcon} accent="progress" />
-        <StatCard label="Closed" value={closedCount} icon={CheckCircleIcon} accent="completed" />
+        <StatCard label="Closed" value={closedCount} icon={CheckCircleIcon} accent="closed" />
       </div>
 
       <div className="flex flex-col gap-3">

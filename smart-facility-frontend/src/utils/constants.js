@@ -68,3 +68,10 @@ export const PRIORITY_BADGE_CLASSES = {
   HIGH: 'bg-status-pending-soft text-status-pending',
   CRITICAL: 'bg-status-critical-soft text-status-critical',
 };
+
+export const ROLE_BADGE_CLASSES = {
+  USER: 'bg-blue-100 text-blue-700 dark:bg-blue-500/15 dark:text-blue-400',
+  COORDINATOR: 'bg-indigo-100 text-indigo-700 dark:bg-indigo-500/15 dark:text-indigo-400',
+  TECHNICIAN: 'bg-teal-100 text-teal-700 dark:bg-teal-500/15 dark:text-teal-400',
+  ADMIN: 'bg-purple-100 text-purple-700 dark:bg-purple-500/15 dark:text-purple-400',
+};

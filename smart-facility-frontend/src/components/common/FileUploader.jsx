@@ -50,7 +50,7 @@ export default function FileUploader({ label, onUpload, existingUrl, disabled = 
       {label && <span className="text-sm font-medium text-text-primary">{label}</span>}
 
       {preview ? (
-        <div className="relative w-full max-w-xs overflow-hidden rounded-lg border border-border">
+        <div className="relative w-full max-w-xs overflow-hidden rounded border border-border">
           <img src={preview} alt="Preview" className="h-40 w-full object-cover" />
           {!disabled && (
             <button
@@ -70,7 +70,7 @@ export default function FileUploader({ label, onUpload, existingUrl, disabled = 
         </div>
       ) : (
         <label
-          className={`flex w-full max-w-xs cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-border bg-card-alt px-4 py-6 text-center transition-colors hover:bg-border/30 ${disabled ? 'pointer-events-none opacity-60' : ''}`}
+          className={`flex w-full max-w-xs cursor-pointer flex-col items-center justify-center gap-2 rounded border border-dashed border-border bg-card-alt px-4 py-6 text-center transition-colors hover:bg-border/30 ${disabled ? 'pointer-events-none opacity-60' : ''}`}
         >
           <PhotoIcon className="h-8 w-8 text-text-secondary" />
           <span className="text-sm text-text-secondary">Click to upload an image</span>

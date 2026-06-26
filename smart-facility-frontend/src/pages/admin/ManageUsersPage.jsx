@@ -7,7 +7,7 @@ import Modal from '../../components/common/Modal';
 import Loader from '../../components/common/Loader';
 import EmptyState from '../../components/common/EmptyState';
 import { userService } from '../../services/userService';
-import { ROLES, SPECIALIZATION_LABELS } from '../../utils/constants';
+import { ROLES, SPECIALIZATION_LABELS, ROLE_BADGE_CLASSES } from '../../utils/constants';
 
 const ROLE_OPTIONS = [
   { value: ROLES.USER, label: 'User' },
@@ -148,7 +148,11 @@ export default function ManageUsersPage() {
                 <tr key={u.id} className="border-b border-border last:border-0">
                   <td className="px-4 py-3 font-medium text-text-primary">{u.fullName}</td>
                   <td className="px-4 py-3 text-text-secondary">{u.email}</td>
-                  <td className="px-4 py-3 text-text-secondary">{u.role}</td>
+                  <td className="px-4 py-3 text-text-secondary">
+                    <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${ROLE_BADGE_CLASSES[u.role] || ''}`}>
+                      {u.role}
+                    </span>
+                  </td>
                   <td className="px-4 py-3 text-text-secondary">
                     {u.specialization ? SPECIALIZATION_LABELS[u.specialization] : '—'}
                   </td>

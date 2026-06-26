@@ -4,57 +4,58 @@
 
 :root {
   /* Light mode tokens */
-  --color-surface: #f8fafc;
-  --color-card: #ffffff;
-  --color-card-alt: #f1f5f9;
-  --color-border: #e2e8f0;
-  --color-text-primary: #1e293b;
-  --color-text-secondary: #64748b;
+  --color-surface: #F8FAFC;
+  --color-card: #FFFFFF;
+  --color-card-alt: #F1F5F9;
+  --color-border: #E2E8F0;
+  --color-text-primary: #1E293B;
+  --color-text-secondary: #64748B;
 
-  --color-brand: #5b63d6;
-  --color-brand-hover: #4a52c4;
-  --color-brand-soft: #eef0fd;
-  --color-teal: #3fa79b;
+  --color-brand: #4F46E5;
+  --color-brand-hover: #4338CA;
+  --color-brand-soft: #EEF2FF;
+  --color-teal: #14B8A6;
 
-  --status-pending: #c8841d;
-  --status-pending-soft: #fcefd8;
-  --status-assigned: #3d6fd9;
-  --status-assigned-soft: #e3ebfc;
-  --status-progress: #7c5cc4;
-  --status-progress-soft: #efe7fa;
-  --status-completed: #2f9e63;
-  --status-completed-soft: #def3e7;
-  --status-closed: #64748b;
-  --status-closed-soft: #eef1f4;
-  --status-critical: #d6504a;
-  --status-critical-soft: #fbe4e2;
+  --status-pending: #F59E0B;
+  --status-pending-soft: #FEF3C7;
+  --status-assigned: #3B82F6;
+  --status-assigned-soft: #DBEAFE;
+  --status-progress: #8B5CF6;
+  --status-progress-soft: #EDE9FE;
+  --status-completed: #22C55E;
+  --status-completed-soft: #DCFCE7;
+  --status-closed: #6B7280;
+  --status-closed-soft: #F3F4F6;
+  --status-critical: #EF4444;
+  --status-critical-soft: #FEE2E2;
 }
 
 html.dark {
-  --color-surface: #0e1525;
-  --color-card: #16203a;
-  --color-card-alt: #1c2942;
-  --color-border: #2b3954;
-  --color-text-primary: #f1f5f9;
-  --color-text-secondary: #94a3b8;
+  /* Dark mode tokens */
+  --color-surface: #0F172A;
+  --color-card: #334155;
+  --color-card-alt: #1E293B;
+  --color-border: #475569;
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #CBD5E1;
 
-  --color-brand: #6fa8f5;
-  --color-brand-hover: #8ab8f7;
-  --color-brand-soft: rgba(111, 168, 245, 0.14);
-  --color-teal: #54b8ac;
+  --color-brand: #60A5FA;
+  --color-brand-hover: #3B82F6;
+  --color-brand-soft: rgba(96, 165, 250, 0.15);
+  --color-teal: #2DD4BF;
 
-  --status-pending: #e3a93c;
-  --status-pending-soft: rgba(227, 169, 60, 0.16);
-  --status-assigned: #6c9dee;
-  --status-assigned-soft: rgba(108, 157, 238, 0.16);
-  --status-progress: #a88ae0;
-  --status-progress-soft: rgba(168, 138, 224, 0.16);
-  --status-completed: #57c48b;
-  --status-completed-soft: rgba(87, 196, 139, 0.16);
-  --status-closed: #94a3b8;
-  --status-closed-soft: rgba(148, 163, 184, 0.16);
-  --status-critical: #e5786f;
-  --status-critical-soft: rgba(229, 120, 111, 0.16);
+  --status-pending: #FCD34D;
+  --status-pending-soft: rgba(245, 158, 11, 0.15);
+  --status-assigned: #93C5FD;
+  --status-assigned-soft: rgba(59, 130, 246, 0.15);
+  --status-progress: #C4B5FD;
+  --status-progress-soft: rgba(139, 92, 246, 0.15);
+  --status-completed: #86EFAC;
+  --status-completed-soft: rgba(34, 197, 94, 0.15);
+  --status-closed: #D1D5DB;
+  --status-closed-soft: rgba(107, 114, 128, 0.15);
+  --status-critical: #FCA5A5;
+  --status-critical-soft: rgba(239, 68, 68, 0.15);
 }
 
 * {
