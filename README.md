@@ -1,111 +1,133 @@
-# Smart Facility Management System — Backend
+# Smart Facility Management System
 
-Spring Boot backend for the Smart Facility Management System.
+A full-stack, enterprise-grade web application for managing facility maintenance tickets, user roles, and operational workflows.
 
-## Tech Stack
-Java 17, Spring Boot 3.2.5, Spring Web, Spring Data JPA, Spring Security, JWT (jjwt 0.12.5), BCrypt, PostgreSQL, Maven, Cloudinary.
+## 🚀 Tech Stack
 
-## 1. Prerequisites
-- JDK 17+
-- Maven 3.8+
-- PostgreSQL 13+ running locally (or remotely)
-- A Cloudinary account (free tier is fine)
+### Backend
+- **Java 17 & Spring Boot 3.2.5**
+- **Spring Data JPA** for robust database interaction.
+- **Spring Security & JWT** for authentication and role-based access control.
+- **PostgreSQL** for relational data persistence.
+- **Cloudinary** for scalable image storage (ticket issues and completion proofs).
+- **Maven** for dependency management.
 
-## 2. Database Setup
-Create the database:
-```sql
-CREATE DATABASE smart_facility_db;
-```
-Tables are auto-created/updated on startup via `spring.jpa.hibernate.ddl-auto=update`.
+### Frontend
+- **React 18** with **Vite** for fast, modern component rendering.
+- **Tailwind CSS** for a responsive, "Navy Corporate" utility-first design system.
+- **React Router DOM** for protected route navigation.
+- **Axios** for API integration and request interception.
+- **Heroicons** for crisp, scalable SVG iconography.
 
-## 3. Environment Variables
-Set these before running (or edit `application.properties` directly):
+---
 
-| Variable | Purpose | Default |
-|---|---|---|
-| `DB_USERNAME` | Postgres username | postgres |
-| `DB_PASSWORD` | Postgres password | postgres |
-| `JWT_SECRET` | Base64 256-bit signing key | placeholder included — replace for production |
-| `JWT_EXPIRATION_MS` | Token lifetime in ms | 86400000 (24h) |
-| `CLOUDINARY_CLOUD_NAME` | Cloudinary cloud name | — required |
-| `CLOUDINARY_API_KEY` | Cloudinary API key | — required |
-| `CLOUDINARY_API_SECRET` | Cloudinary API secret | — required |
-| `CORS_ALLOWED_ORIGINS` | Frontend origin(s), comma-separated | http://localhost:5173 |
-| `DEFAULT_ADMIN_EMAIL` | Seeded admin login | admin@smartfacility.com |
-| `DEFAULT_ADMIN_PASSWORD` | Seeded admin password | Admin@123 |
+## 👥 User Roles & Workflows
 
-## 4. Run
-```bash
-mvn clean install
-mvn spring-boot:run
-```
-Server starts on `http://localhost:8080`.
+The system uses a strict 4-tier Role-Based Access Control (RBAC) model:
 
-On first run, the app seeds:
-- 6 default categories (Electrical, Plumbing, IT Support, Cleaning, Transport, General Maintenance)
-- 1 ADMIN account using `DEFAULT_ADMIN_EMAIL` / `DEFAULT_ADMIN_PASSWORD`
+1. **ADMIN**
+   - Has a global view of all tickets, categories, and users.
+   - Manages the master list of users (creates, activates, deactivates, or deletes).
+   - Manages facility categories (e.g., Electrical, Plumbing, IT).
+   - Views the dashboard with high-level statistics but cannot modify or close individual tickets directly.
 
-Log in as that admin, then create COORDINATOR, TECHNICIAN, and USER accounts from `POST /api/users`.
+2. **USER (Tenant / Employee)**
+   - Can raise maintenance tickets and upload photos of issues.
+   - Can view the status, history, and assigned technician for their own tickets.
 
-## 5. Project Structure
-```
-src/main/java/com/example/smartfacility
-├── controller       REST endpoints (thin — delegate to services)
-├── service           Interfaces
-├── service/impl       Business logic
-├── repository         Spring Data JPA repositories
-├── model              JPA entities
-├── dto/request        Inbound DTOs
-├── dto/response        Outbound DTOs
-├── enums               Role, Priority, TicketStatus, TechnicianSpecialization, NotificationType
-├── security            JWT + Spring Security config
-├── config              Cloudinary bean + startup data seeding
-├── exception           Custom exceptions + global handler
-└── SmartFacilityApplication.java
-```
+3. **COORDINATOR (Dispatcher)**
+   - Acts as the central dispatcher.
+   - Assigns incoming `PENDING` tickets to available Technicians based on their specialization.
+   - Verifies the work of Technicians.
+   - Closes `COMPLETED` tickets after verification.
 
-## 6. API Summary
+4. **TECHNICIAN**
+   - Receives assigned tickets and reviews issue details/photos.
+   - Can change ticket status to `IN_PROGRESS` when work begins.
+   - Uploads completion proof (images) and remarks to change status to `COMPLETED`.
 
-**Auth**
-- `POST /api/auth/login` — public
+---
 
-**Users (Admin)**
-- `POST /api/users`, `GET /api/users`, `GET /api/users/{id}`, `PUT /api/users/{id}`
-- `PUT /api/users/{id}/status`, `PUT /api/users/{id}/role`, `DELETE /api/users/{id}`
-- `GET /api/users/technicians?specialization=` — Coordinator/Admin, lists technicians for assignment
+## 🛠 Prerequisites
 
-**Profile (any authenticated user)**
-- `GET /api/users/profile`, `PUT /api/users/profile`, `PUT /api/users/profile/password`
+- **JDK 17+**
+- **Maven 3.8+**
+- **Node.js 18+**
+- **PostgreSQL 13+** running locally (or remotely)
+- A **Cloudinary** account (free tier) for image uploads
 
-**Categories**
-- `GET /api/categories` — active only, any authenticated user
-- `GET /api/categories/all` — Admin, includes inactive
-- `POST /api/categories`, `PUT /api/categories/{id}`, `PUT /api/categories/{id}/status`, `DELETE /api/categories/{id}` — Admin
+---
 
-**Tickets**
-- `POST /api/tickets` — User
-- `GET /api/tickets/my-tickets` — User
-- `GET /api/tickets/coordinator` — Coordinator
-- `GET /api/tickets/assigned` — Technician
-- `GET /api/tickets` — Admin
-- `GET /api/tickets/{id}` — any party to the ticket, or Admin/Coordinator
-- `PUT /api/tickets/{id}/assign` — Coordinator
-- `PUT /api/tickets/{id}/status` — Technician (starts work → IN_PROGRESS)
-- `PUT /api/tickets/{id}/complete` — Technician
-- `PUT /api/tickets/{id}/close` — Coordinator
-- `GET /api/tickets/{id}/history` — authorized parties
+## ⚙️ Backend Setup & Configuration
 
-**Notifications**
-- `GET /api/notifications`, `GET /api/notifications/unread-count`
-- `PUT /api/notifications/{id}/read`, `PUT /api/notifications/read-all`
+1. **Database Setup**
+   Create a local PostgreSQL database:
+   ```sql
+   CREATE DATABASE smart_facility_db;
+   ```
+   *Tables will be automatically generated by Hibernate on the first startup.*
 
-**Uploads** (multipart/form-data, field name `file`)
-- `POST /api/uploads/ticket-issue`
-- `POST /api/uploads/ticket-completion`
-- `POST /api/uploads/profile-image` (also updates the caller's profile)
+2. **Environment Variables**
+   Open `smart-facility-backend/src/main/resources/application.properties` and configure your credentials, or set them in your environment:
+   
+   | Variable | Description | Default |
+   |---|---|---|
+   | `DB_USERNAME` | Postgres username | `postgres` |
+   | `DB_PASSWORD` | Postgres password | `postgres` |
+   | `JWT_SECRET` | Base64 256-bit signing key | Included (change in prod) |
+   | `CLOUDINARY_CLOUD_NAME`| Your Cloudinary cloud name | **Required** |
+   | `CLOUDINARY_API_KEY` | Your Cloudinary API key | **Required** |
+   | `CLOUDINARY_API_SECRET`| Your Cloudinary API secret | **Required** |
+   | `CORS_ALLOWED_ORIGINS` | Allowed frontend origin | `http://localhost:5173` |
 
-## 7. Known Limitations / Next Steps
-- This backend was built and reviewed in a sandbox without internet/Maven access, so it has **not** been compiled or run yet. Run `mvn clean install` locally first and fix any minor issues that surface (none are expected — every controller↔service↔repository call was manually cross-checked, but a real compile is the final confirmation).
-- No automated tests included yet.
-- No rate-limiting / refresh-token rotation — access tokens are long-lived (24h default); rotate `JWT_SECRET` and shorten expiry for production.
-- Frontend (React) is not yet built — that's the next step.
+3. **Run the Backend**
+   ```bash
+   cd smart-facility-backend
+   mvn clean install
+   mvn spring-boot:run
+   ```
+   The API will start at `http://localhost:8080/api`.
+
+---
+
+## 🎨 Frontend Setup & Configuration
+
+1. **Environment Variables**
+   Navigate to the frontend directory and copy the example environment file:
+   ```bash
+   cd smart-facility-frontend
+   cp .env.example .env
+   ```
+   Ensure `VITE_API_BASE_URL` points to your backend (default is `http://localhost:8080/api`).
+
+2. **Install & Run**
+   ```bash
+   npm install
+   npm run dev
+   ```
+   The application will start at `http://localhost:5173`.
+
+---
+
+## 🔑 Initial Seeding & Login
+
+On the first successful run of the backend, the system automatically seeds the database with:
+- **6 Default Categories:** Electrical, Plumbing, IT Support, Cleaning, Transport, General Maintenance.
+- **1 Master Admin Account:** 
+  - **Email:** `admin@smartfacility.com`
+  - **Password:** `Admin@123`
+
+**Next Steps:**
+1. Log in to the frontend using the seeded Master Admin account.
+2. Navigate to **Manage Users** in the sidebar.
+3. Create at least one **COORDINATOR**, **TECHNICIAN**, and **USER** to test the full lifecycle of a ticket.
+
+---
+
+## 📱 Features
+
+- **Real-Time Notifications:** In-app notification bell dropdown alerts users, coordinators, and technicians about ticket updates.
+- **Media Uploads:** Seamless image uploads to Cloudinary for ticket creation, completion proofs, and user profile pictures.
+- **Dark Mode:** Full dark mode support using CSS variables and Tailwind's `dark:` class variant, adhering to a premium "Navy Corporate" design language.
+- **Audit Trails:** Comprehensive `TicketHistory` tracking that records status changes, who made them, and when.
+- **Responsive Design:** Mobile-first dashboard layouts that scale beautifully on desktops.
